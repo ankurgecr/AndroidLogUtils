@@ -1,4 +1,41 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven-publish' // package:1
+
+def githubProperties = new Properties()                                              // package:2
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))    // package:2
+
+// package:3
+def getVersionName = { ->
+    return "1.0.0"
+}
+
+// package:4
+def getArtificatId = { ->
+    return "apploghelper"
+}
+
+// package:5
+publishing {
+    publications {
+        bar(MavenPublication) {
+            groupId 'info.ankurpandya.logutils' // Replace with group ID
+            artifactId getArtificatId()
+            version getVersionName()
+            artifact("$buildDir/outputs/aar/${getArtificatId()}-release.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ankurgecr/AndroidLogUtils")
+            credentials {
+                username = githubProperties['gpr.usr'] ?: System.getenv("GPR_USER")
+                password = githubProperties['gpr.key'] ?: System.getenv("GPR_API_KEY")
+            }
+        }
+    }
+}
 
 android {
     compileSdkVersion 30

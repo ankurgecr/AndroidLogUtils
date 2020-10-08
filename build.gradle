@@ -16,6 +16,11 @@ allprojects {
     repositories {
         google()
         jcenter()
+        //maven { url 'https://raw.githubusercontent.com/ankurgecr/AndroidLogUtils/releases'}
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/ankurgecr/AndroidLogUtils")
+        }
     }
 }
 
