@@ -1,0 +1,1 @@
+./gradlew clean build bintrayUpload -PbintrayUser=USER_NAME -PbintrayKey=KEY -PdryRun=false --warning-mode=all -Pandroid.debug.obsoleteApi=true

@@ -6,7 +6,7 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.1"
-
+        classpath 'com.github.panpf.bintray-publish:bintray-publish:1.0.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -16,11 +16,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        //maven { url 'https://raw.githubusercontent.com/ankurgecr/AndroidLogUtils/releases'}
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/ankurgecr/AndroidLogUtils")
-        }
     }
 }
 
