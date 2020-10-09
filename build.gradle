@@ -15,7 +15,12 @@ buildscript {
 allprojects {
     repositories {
         google()
+        //If you want to load lib from jcenter (takes time until lib has been published for first time)
         jcenter()
+        //If you want to load lib from bintray directly
+        maven {
+            url "https://dl.bintray.com/ankurgecr/maven"
+        }
     }
 }
 
