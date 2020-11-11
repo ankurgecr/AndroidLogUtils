@@ -62,6 +62,9 @@ public class AppLogHelper {
 
     public static void d(String tag, String message, Exception exception) {
         if (exception != null) {
+            if (message == null) {
+                message = "null";
+            }
             message += " " + exception.getMessage();
         }
         log('d', tag, message);
@@ -69,6 +72,9 @@ public class AppLogHelper {
 
     public static void w(String tag, String message, Exception exception) {
         if (exception != null) {
+            if (message == null) {
+                message = "null";
+            }
             message += " " + exception.getMessage();
         }
         log('w', tag, message);
@@ -79,6 +85,9 @@ public class AppLogHelper {
             //Crashlytics.log(0, tag, message);
             //Bugfender.d(tag, message);
             return;
+        }
+        if (message == null) {
+            message = "null";
         }
         if (message.length() > 4000) {
             int chunkCount = message.length() / 4000;     // integer division
